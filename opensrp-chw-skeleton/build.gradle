@@ -182,7 +182,7 @@ dependencies {
         exclude group: 'org.apache.httpcomponents', module: 'httpmime'
     }
 
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.22"))
 
     implementation group: 'id.zelory', name: 'compressor', version: '3.0.1'
 
@@ -193,6 +193,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'cardview-v7'
         exclude group: 'io.ona.CircleProgressbar', module: 'lib'
         exclude group: 'id.zelory', module: 'compressor'
+        exclude group: 'com.google.guava', module: 'guava'
 
     }
     implementation 'com.emredavarci:circleprogressbar:1.0.8-SNAPSHOT'
@@ -202,7 +203,10 @@ dependencies {
         exclude group: 'org.smartregister', module: 'opensrp-client-core'
         exclude group: 'org.smartregister', module: 'opensrp-client-native-form'
         exclude group: 'com.android.support', module: 'appcompat-v7'
+        exclude group: 'com.google.guava', module: 'guava'
     }
+
+    implementation 'com.google.guava:guava:31.1-android'
 
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
