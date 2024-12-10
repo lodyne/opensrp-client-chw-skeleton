@@ -26,15 +26,26 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      - name: Set up GitHub Maven credentials
+        run: |
+          echo "gpr.usr=${{ github.actor }}" >> $GITHUB_ENV
+          echo "gpr.key=${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
+
       - name: Run unit tests with Gradle
         run: |
           ./gradlew opensrp-chw-skeleton:clean \
                     opensrp-chw-skeleton:jacocoTestReport \
                     --stacktrace \
                     -Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"
+        env:
+          GPR_USER: ${{ github.actor }}
+          GPR_KEY: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate Javadoc with Gradle
         run: ./gradlew javadoc
+        env:
+          GPR_USER: ${{ github.actor }}
+          GPR_KEY: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload coverage to Coveralls
         uses: coverallsapp/github-action@v2
